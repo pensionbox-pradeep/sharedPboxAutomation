@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.CreateMyPlanFlow">
+      <class name="forTroubleShootingTest.Testtest">
         <methods>
           <include name="initializeExReports"/>
           <include name="generateExReports"/>
-          <include name="createMyPlan"/>
           <include name="closeBrowser"/>
           <include name="openBrowser"/>
+          <include name="test2"/>
         </methods>
-      </class> <!-- testScripts.CreateMyPlanFlow -->
+      </class> <!-- forTroubleShootingTest.Testtest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
