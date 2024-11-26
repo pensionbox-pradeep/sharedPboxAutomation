@@ -10,55 +10,93 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Reporter;
 
 public class CreateMyPlanPage {
-
+	
 	/**
-	 * Personal Details
+	 * Personal Details Page
 	 */
+	
+	/**
+	 * Let's create your retirement plan modal
+	 */
+	
+	//Lets create a plan Modal Header
+	@FindBy(xpath = "//div[contains(@class, 'welcomeHeader')]")
+	private WebElement letsCreatePlanHeader;
+	
+	//Go back button on the modal
 	@FindBy(xpath = "//span[text()='Go Back']")
 	private WebElement goBackBtn;
-
+	
+	//Close icon on the modal		
 	@FindBy(xpath = "//div[contains(@class,'closeIcon')]") 
 	private WebElement closeIconBtn;
-
+	
+	//Lets Do It Now button on the modal
 	@FindBy(xpath = "//span[text()='Let’s Do It Now']")
 	private WebElement letsDoItNowBtn;
 
-	@FindBy(id = "outlined-basic")
+	
+	//Full Name TF Personal Details
+	@FindBy(xpath = "//input[@id='outlined-basic']")
 	private WebElement fullNameTf;
+	
+	//Name Fieldset
+	@FindBy(xpath = "//input[contains(@name,'name')]/../fieldset")
+	private WebElement nameFieldset;
 
-	@FindBy(id = ":r8:")
+	//Date of Birth Picker Personal Details
+	@FindBy(xpath = "//input[@placeholder='DD/MM/YYYY']")
 	private WebElement dOBPicker;
 
-	@FindBy(xpath = "//div[@role='radiogroup']")
-	private WebElement dOBYearGrid;
+	//
+	@FindBy(xpath = "//div[contains(@class,'MuiPickersYear')]")
+	private List<WebElement> dOBYearGrid;
 
-	@FindBy(xpath = "//div[contains(@class,'MuiMonthCalendar')]")
-	private WebElement dOBMonthGrid;
+	//
+	@FindBy(xpath = "//div[contains(@class,'MuiPickersMonth')]")
+	private List<WebElement> dOBMonthGrid;
+	
+	//
+	@FindBy(xpath = "//button[contains(@class,'MuiPickersDay')]")
+	private List<WebElement> dOBDayGrid;
 
-	@FindBy(xpath = "//div[contains(@class,'monthContainer')]")
-	private WebElement dOBDayGrid;
-
+	//
+	@FindBy(xpath = "//input[@placeholder='DD/MM/YYYY']/../../label")
+	private WebElement datePickerLabel;			
+	
+	//
 	@FindBy(xpath = "//button[text()='Cancel']")
 	private WebElement dateCancelBtn;
 
+	//
 	@FindBy(xpath = "//button[text()='OK']")
 	private WebElement dateOkBtn;
 
+	//Gender Picker Personal Details
 	@FindBy(id = "demo-simple-select")
 	private WebElement genderPicker;
 
+	//Female Gender
 	@FindBy(xpath = "//li[text()='Female']")
 	private WebElement femaleGenderLi;
 
+	//Male Gender
 	@FindBy(xpath = "//li[text()='Male']")
 	private WebElement maleGenderLi;
 
+	//Other Gender
 	@FindBy(xpath = "//li[text()='Other']")
 	private WebElement otherGenderLi;
 
+	/**
+	 * Financial Status Section
+	 */
+	
+	//Earning Status Financial Status
 	@FindBy(id = "demo-simple-select-outlined")
 	private WebElement earningStatusPicker;
 
+	
 	@FindBy(xpath = "//li[text()='Salaried']")
 	private WebElement salariedli;
 
@@ -102,7 +140,7 @@ public class CreateMyPlanPage {
 	private WebElement backBtn;
 
 	/**
-	 * Risc Profile
+	 * Risk Profile
 	 */
 	@FindBy(id = "01")
 	private WebElement risk0Btn;
@@ -176,7 +214,8 @@ public class CreateMyPlanPage {
 	@FindBy(xpath = "//span[text()='Submit']")
 	private WebElement modalSubmitBtn;
 
-
+	@FindBy(xpath = "//div[contains(@class,'MuiBackdrop')]")
+	private WebElement backDrop;
 
 	/**
 	 * PageFactory
@@ -185,6 +224,13 @@ public class CreateMyPlanPage {
 
 	public CreateMyPlanPage(WebDriver driver){
 		PageFactory.initElements(driver,this);
+	}
+
+	/**
+	 * @return the letsCreatePlanHeader
+	 */
+	public WebElement getLetsCreatePlanHeader() {
+		return letsCreatePlanHeader;
 	}
 
 	/**
@@ -216,6 +262,13 @@ public class CreateMyPlanPage {
 	}
 
 	/**
+	 * @return the nameFieldset
+	 */
+	public WebElement getNameFieldset() {
+		return nameFieldset;
+	}
+
+	/**
 	 * @return the dOBPicker
 	 */
 	public WebElement getdOBPicker() {
@@ -225,22 +278,29 @@ public class CreateMyPlanPage {
 	/**
 	 * @return the dOBYearGrid
 	 */
-	public WebElement getdOBYearGrid() {
+	public List<WebElement> getdOBYearGrid() {
 		return dOBYearGrid;
 	}
 
 	/**
 	 * @return the dOBMonthGrid
 	 */
-	public WebElement getdOBMonthGrid() {
+	public List<WebElement> getdOBMonthGrid() {
 		return dOBMonthGrid;
 	}
 
 	/**
 	 * @return the dOBDayGrid
 	 */
-	public WebElement getdOBDayGrid() {
+	public List<WebElement> getdOBDayGrid() {
 		return dOBDayGrid;
+	}
+
+	/**
+	 * @return the datePickerLabel
+	 */
+	public WebElement getDatePickerLabel() {
+		return datePickerLabel;
 	}
 
 	/**
@@ -528,6 +588,19 @@ public class CreateMyPlanPage {
 	 */
 	public WebElement getModalSubmitBtn() {
 		return modalSubmitBtn;
+	}
+	/**
+	 * @return the backDrop
+	 */
+	public WebElement getBackDrop() {
+		return backDrop;
+	}
+
+	/**
+	 * @return the mMar
+	 */
+	public WebElement getmMar() {
+		return mMar;
 	}
 	/**
 	 * DOB 

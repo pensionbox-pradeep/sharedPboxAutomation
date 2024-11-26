@@ -924,7 +924,7 @@ public class Nps1RegistrationPage {
 	}
 
 	public void fillNomineeDetails(String nomineeFN, String nomineeMN, String nomineeLN 
-			,boolean major, String relation, String age, String percentage1) {
+			,boolean major, String relation, String age, String percentage1) throws InterruptedException {
 
 		getNomineeDetailsCollapsible().click();
 

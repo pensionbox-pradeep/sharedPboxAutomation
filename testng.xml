@@ -7,7 +7,7 @@
 	</listeners>
   <test thread-count="1" name="Test">
     <classes>
-		<class name="testScripts.SignUp"/>
+		<class name="testScripts.Login"/>
 		<!--<class name="tests.Trial"/>-->
 		<!--<class name="testScripts.Login"/>-->
 		<!--<class name="testScripts.CreateMyPlanFlow"/>-->
