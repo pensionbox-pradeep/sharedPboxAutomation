@@ -326,9 +326,152 @@ public class CreateMyPlanFlow2 extends WipBaseClass{
 
 		cmp.getSalariedli().click();
 
-		//wdu.waitForElementTobeClickable(driver, 10, cmp.getGenderPicker());
-		Allure.step("Gender Picker is Present and Visible, PASSED");
+		Allure.step("Earning Picker is Present and Visible, PASSED");
 	}
 
-
+	@Test(priority=2,dependsOnMethods = "CMP_TC016")
+	@Description("Verify Earning Status Picker: if Salaried option is Clickable")
+	public void CMP_TC017() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Click on Earning Picker to open it");
+		cmp.getEarningStatusPicker().click();
+		Allure.step("Check for visibility of Earning Status Picker Salaried option");
+		wdu.waitForElementTobeClickable(driver, 3, cmp.getSalariedli());
+		Assert.assertEquals(wdu.isItDisplayed(cmp.getSalariedli()), true, "Salaried option is Present");
+		Allure.step("Click on Salaried option");
+		cmp.getSalariedli().click();
+		Assert.assertEquals(cmp.getEarningStatusPicker().getText(), "Salaried", "Salaried option is selected");
+		Allure.step("Salaried option is Present and Clickable, PASSED");
+	}
+	
+	@Test(priority=1,dependsOnMethods = "CMP_TC016")
+	@Description("Verify Earning Status Picker: if Self Employed option is Clickable")
+	public void CMP_TC018() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Click on Earning Picker to open it");
+		cmp.getEarningStatusPicker().click();
+		Allure.step("Check for visibility of Earning Status Picker Self Employed option");
+		wdu.waitForElementTobeClickable(driver, 3, cmp.getSelfEmployedLi());
+		Assert.assertEquals(wdu.isItDisplayed(cmp.getSelfEmployedLi()), true, "Self Employed option is Present");
+		Allure.step("Click on Self Employed option");
+		cmp.getSelfEmployedLi().click();
+		Assert.assertEquals(cmp.getEarningStatusPicker().getText(), "Self Employed", "Self Employed option is selected");
+		Allure.step("Self Employed option is Present and Clickable, PASSED");
+	}
+	
+	@Test(priority=0,dependsOnMethods = "CMP_TC016")
+	@Description("Verify Earning Status Picker: if Unemployed option is Clickable")
+	public void CMP_TC019() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Click on Earning Picker to open it");
+		cmp.getEarningStatusPicker().click();
+		Allure.step("Check for visibility of Earning Status Picker Unemployed option");
+		wdu.waitForElementTobeClickable(driver, 3, cmp.getNotWorkingLi());
+		Assert.assertEquals(wdu.isItDisplayed(cmp.getNotWorkingLi()), true, "Unemployed option is Present");
+		Allure.step("Click on Unemployed option");
+		cmp.getNotWorkingLi().click();
+		Assert.assertEquals(cmp.getEarningStatusPicker().getText(), "Not Working", "Unemployed option is selected");
+		Allure.step("Unemployed option is Present and Clickable, PASSED");
+	}
+	
+	@Test(dependsOnMethods = "CMP_TC0016")
+	@Description("Verify Current City Text Box")
+	public void CMP_TC020() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Check for visibility of Current City Text Box");
+		Assert.assertEquals(wdu.isItDisplayed(cmp.getCurrentCityTF()), true, "Current City Text Box is Present and Visible");
+		Allure.step("Current City Text Box is Present and Visible, PASSED");
+	}
+	
+	@Test(priority=0,dependsOnMethods = "CMP_TC0020")
+	@Description("Verify Current City Text Box for Blank/ No input, This covers TC024 and TC025")
+	public void CMP_TC021() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Click and Clear the Current City Text Box");
+		cmp.getCurrentCityTF().sendKeys(Keys.CONTROL+"A"+Keys.BACK_SPACE);
+		Allure.step("Click on Next without entering any input");
+		cmp.getNextBtn().click();
+		Allure.step("Check for warning message in Current City Text Box");
+		Assert.assertEquals(cmp.getCurrentCityTFLabel().getText(), "Current City (Required)", 
+				"Current City (Required) warning is Present and Visible");
+		Allure.step("Current City (Required) warning is Present and Visible, PASSED");
+	}
+	
+	@Test(priority=1,dependsOnMethods = "CMP_TC0020")
+	@Description("Verify Current City Text Box for Invalid input")
+	public void CMP_TC022() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Click and Clear the Current City Text Box");
+		cmp.getCurrentCityTF().sendKeys(Keys.CONTROL+"A"+Keys.BACK_SPACE);
+		Allure.step("Enter inValid input in Current City Text Box");
+		//Get it from data provider
+		cmp.getCurrentCityTF().sendKeys("Chennai");
+		Allure.step("Click on Next without selecting any input from dropdown");
+		cmp.getNextBtn().click();
+		Allure.step("Check for warning message in Current City Text Box");
+		Assert.assertEquals(cmp.getCurrentCityTFLabel().getText(), "Select current city", 
+				"Select current city warning is Present and Visible");
+		Allure.step("Select current city warning is Present and Visible, PASSED");
+	}
+	
+	@Test(priority=2,dependsOnMethods = "CMP_TC0020")
+	@Description("Verify Current City Text Box for Valid input")
+	public void CMP_TC023() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Click and Clear the Current City Text Box");
+		cmp.getCurrentCityTF().sendKeys(Keys.CONTROL+"A"+Keys.BACK_SPACE);
+		Allure.step("Enter Valid input in Current City Text Box");
+		//Get it from data provider
+		cmp.getCurrentCityTF().sendKeys("Bengaluru");
+		Allure.step("Check for the Dropdown visibility");
+		wdu.waitForElementTobeClickable(driver, 3, cmp.getCurrentCityLi().get(0));
+		Assert.assertEquals(wdu.isItDisplayed(cmp.getCurrentCityLi().get(0)), true, "Current City list is Visible");
+		
+		//Needs optimization and fetch from data provider
+		Allure.step("Click on any option from the dropdown");
+		wdu.selectElementWithContainsText(cmp.getCurrentCityLi(), "Bengaluru");
+		
+		Allure.step("Check if the city is selected from the dropdown");
+		Assert.assertEquals(cmp.getCurrentCityTFLabel().getText(), "Current City", "City is Selected, Warning is not Present");
+		
+		Allure.step("City is Selected, Warning is not Present, PASSED");
+			
+	}
+	
+//	@Test(priority=3,dependsOnMethods = "CMP_TC0020")
+//	@Description("Verify Current City Text Box for Valid input")
+//	public void CMP_TC024() {
+//		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+//		Allure.step("Click on Next without selecting any input from dropdown");
+//		cmp.getNextBtn().click();
+//		Allure.step("Check for warning message in Current City Text Box");
+//		Assert.assertEquals(cmp.getCurrentCityTFLabel().getText(), "Select current city", 
+//				"Select current city warning is not Present");
+//		Allure.step("Select current city warning is not Present, PASSED");
+//	}
+	
+	@Test(dependsOnMethods = {"CMP_TC001","CMP_TC003","CMP_TC007","CMP_TC011","CMP_TC013","CMP_TC017","CMP_TC023"})
+	@Description("Verify Next Button for Valid Inputs in Personal Details")
+	public void CMP_TC026() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Click on Next without selecting any input from dropdown");
+		cmp.getNextBtn().click();
+		Allure.step("Check for warning message in Current City Text Box");
+		Assert.assertEquals(cmp.getCurrentCityTFLabel().getText(), "Select current city", 
+				"Select current city warning is not Present");
+		Allure.step("Select current city warning is not Present, PASSED");
+	}
+	
+	@Test(dependsOnMethods = "CMP_TC026")
+	@Description("Verify Next Button for Valid Inputs in Personal Details")
+	public void CMP_TC027() {
+		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
+		Allure.step("Verify Page load of Financial Status Page");
+		Allure.step("Check for Financial Status Header");
+		Assert.assertEquals(cmp.getFinancialStatusHeader().getText(), "Financial Status", 
+				"Financial Status Header is Present and Visible");
+		Allure.step("Financial Status Header is Present and Visible, PASSED");
+	}
+	
 }
+	

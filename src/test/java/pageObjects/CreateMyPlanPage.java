@@ -109,12 +109,25 @@ public class CreateMyPlanPage {
 	@FindBy(id = "free-solo-demo")
 	private WebElement currentCityTF;
 
+	@FindBy(id="free-solo-demo-label")
+	private WebElement currentCityTFLabel;
+	
+	@FindBy(id="free-solo-demo-listbox")
+	private WebElement currentCityTFListbox;
+	
+	@FindBy(xpath="//li[contains(@id,'free-solo-demo-option')]")
+	private List<WebElement> currentCityLi;
+	
 	@FindBy(xpath = "//span[text()='Next']")
 	private WebElement nextBtn;
 
 	/**
 	 * Financial Status
 	 */
+	
+	@FindBy(xpath = "//div[contains(text(),'Financial Status')]")
+	private WebElement financialStatusHeader;
+	
 	@FindBy(xpath = "(//input[@id='outlined-basic'])[1]")
 	private WebElement incomeTF;
 
@@ -346,6 +359,13 @@ public class CreateMyPlanPage {
 	}
 
 	/**
+	 * @return the financialStatusHeader
+	 */
+	public WebElement getFinancialStatusHeader() {
+		return financialStatusHeader;
+	}
+
+	/**
 	 * @return the earningStatusPicker
 	 */
 	public WebElement getEarningStatusPicker() {
@@ -378,6 +398,27 @@ public class CreateMyPlanPage {
 	 */
 	public WebElement getCurrentCityTF() {
 		return currentCityTF;
+	}
+
+	/**
+	 * @return the currentCityPickerLabel
+	 */
+	public WebElement getCurrentCityTFLabel() {
+		return currentCityTFLabel;
+	}
+
+	/**
+	 * @return the currentCityTFListbox
+	 */
+	public WebElement getCurrentCityTFListbox() {
+		return currentCityTFListbox;
+	}
+
+	/**
+	 * @return the currentCityLi
+	 */
+	public List<WebElement> getCurrentCityLi() {
+		return currentCityLi;
 	}
 
 	/**
