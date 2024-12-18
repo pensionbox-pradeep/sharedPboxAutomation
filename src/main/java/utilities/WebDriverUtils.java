@@ -1,4 +1,4 @@
-package generic;
+package utilities;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -33,6 +33,18 @@ public class WebDriverUtils {
 	}
 	
 	/**
+	 * This method will hover over the element
+	 * @param driver
+	 * @param element
+	 * @throws InterruptedException 
+	 */
+	public void hoverOverElement(WebDriver driver, WebElement element) throws InterruptedException {
+		Actions a = new Actions(driver);
+		a.moveToElement(element).perform();
+		Thread.sleep(500);
+	}
+	
+	/**
 	 * This method will wait for the page to load the title explicitly
 	 * @param driver
 	 * @param title
@@ -40,6 +52,17 @@ public class WebDriverUtils {
 	public void waitForTitle(WebDriver driver,int time, String title) {
 		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(time)); 
 		wait.until(ExpectedConditions.titleContains(title));
+	}
+	
+	/**
+	 * This method will wait for the page to load the url
+	 * @param driver
+	 * @param time
+	 * @param url
+	 */
+	public void waitForURL(WebDriver driver,int time, String url) {
+		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(time)); 
+		wait.until(ExpectedConditions.urlToBe(url));
 	}
 	
 	/**
@@ -51,6 +74,18 @@ public class WebDriverUtils {
 	public void waitForVisibility(WebDriver driver,int time, String elementXPath) {
 		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(time)); 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXPath)));
+	}
+	
+	/**
+	 * This method will wait for the element text to match
+	 * @param driver
+	 * @param time
+	 * @param xPath
+	 * @param text
+	 */
+	public void waitForElementText(WebDriver driver,int time, String xPath, String text) {
+		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(time));
+		wait.until(ExpectedConditions.textToBe(By.xpath(xPath), text));
 	}
 	
 	/**
@@ -149,6 +184,12 @@ public class WebDriverUtils {
 		return we.isDisplayed();
 	}
 	
+//	
+//	public void waitForCondtionToBe(WebDriver driver, WebElement element, boolean condition, int time) {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+//		wait.until(ExpectedConditions.invisibilityOf(element));
+//	}
+	
 	/**
 	 * 
 	 * @param we
@@ -217,6 +258,15 @@ public class WebDriverUtils {
 	 */
 	public void selectDay(List<WebElement> liWe, String selectDay) throws InterruptedException {
 		selectElementWithText(liWe, selectDay);
+	}
+	
+	/**
+	 * This method will return the element using xpath
+	 * @param driver
+	 * @param xPath
+	 */
+	public WebElement lazyWEXp(WebDriver driver, String xPath) {
+		return driver.findElement(By.xpath(xPath));
 	}
 }
 

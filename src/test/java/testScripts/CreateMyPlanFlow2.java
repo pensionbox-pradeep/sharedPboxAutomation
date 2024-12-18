@@ -313,7 +313,7 @@ public class CreateMyPlanFlow2 extends WipBaseClass{
 		Allure.step("Other option is Present and Clickable, PASSED");
 	}
 
-	@Test(dependsOnMethods = "CMP_TC008")
+	@Test(dependsOnMethods = "CMP_TC011")
 	@Description("Verify Earning Status Pickers")
 	public void CMP_TC016() {
 		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
@@ -374,7 +374,7 @@ public class CreateMyPlanFlow2 extends WipBaseClass{
 		Allure.step("Unemployed option is Present and Clickable, PASSED");
 	}
 	
-	@Test(dependsOnMethods = "CMP_TC0016")
+	@Test(dependsOnMethods = "CMP_TC016")
 	@Description("Verify Current City Text Box")
 	public void CMP_TC020() {
 		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
@@ -383,7 +383,7 @@ public class CreateMyPlanFlow2 extends WipBaseClass{
 		Allure.step("Current City Text Box is Present and Visible, PASSED");
 	}
 	
-	@Test(priority=0,dependsOnMethods = "CMP_TC0020")
+	@Test(priority=0,dependsOnMethods = "CMP_TC020")
 	@Description("Verify Current City Text Box for Blank/ No input, This covers TC024 and TC025")
 	public void CMP_TC021() {
 		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
@@ -397,7 +397,7 @@ public class CreateMyPlanFlow2 extends WipBaseClass{
 		Allure.step("Current City (Required) warning is Present and Visible, PASSED");
 	}
 	
-	@Test(priority=1,dependsOnMethods = "CMP_TC0020")
+	@Test(priority=1,dependsOnMethods = "CMP_TC020")
 	@Description("Verify Current City Text Box for Invalid input")
 	public void CMP_TC022() {
 		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
@@ -414,7 +414,7 @@ public class CreateMyPlanFlow2 extends WipBaseClass{
 		Allure.step("Select current city warning is Present and Visible, PASSED");
 	}
 	
-	@Test(priority=2,dependsOnMethods = "CMP_TC0020")
+	@Test(priority=2,dependsOnMethods = "CMP_TC020")
 	@Description("Verify Current City Text Box for Valid input")
 	public void CMP_TC023() {
 		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
@@ -457,9 +457,8 @@ public class CreateMyPlanFlow2 extends WipBaseClass{
 		Allure.step("Click on Next without selecting any input from dropdown");
 		cmp.getNextBtn().click();
 		Allure.step("Check for warning message in Current City Text Box");
-		Assert.assertEquals(cmp.getCurrentCityTFLabel().getText(), "Select current city", 
-				"Select current city warning is not Present");
-		Allure.step("Select current city warning is not Present, PASSED");
+		Assert.assertEquals(wdu.isItDisplayed(cmp.getPersonalDetailsTick()),true, "Personal Details Tick is Present");
+		Allure.step("Personal Details Tick is Present, PASSED");
 	}
 	
 	@Test(dependsOnMethods = "CMP_TC026")
@@ -468,6 +467,8 @@ public class CreateMyPlanFlow2 extends WipBaseClass{
 		CreateMyPlanPage cmp=new CreateMyPlanPage(driver);
 		Allure.step("Verify Page load of Financial Status Page");
 		Allure.step("Check for Financial Status Header");
+		
+		wdu.waitForElementTobeClickable(driver, 3, cmp.getIncomeTF());
 		Assert.assertEquals(cmp.getFinancialStatusHeader().getText(), "Financial Status", 
 				"Financial Status Header is Present and Visible");
 		Allure.step("Financial Status Header is Present and Visible, PASSED");

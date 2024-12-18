@@ -3,8 +3,8 @@ package testScripts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import generic.WebDriverUtils;
 import pageObjects.GetStartedPage;
+import utilities.WebDriverUtils;
 
 public class NotificationNoLogin{
 	

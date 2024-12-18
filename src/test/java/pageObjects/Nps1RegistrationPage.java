@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import generic.WebDriverUtils;
+import utilities.WebDriverUtils;
 
 public class Nps1RegistrationPage {
 	@FindBy(xpath = "//button[text()='Let’s do it now']")
