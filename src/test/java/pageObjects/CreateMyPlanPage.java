@@ -88,12 +88,14 @@ public class CreateMyPlanPage {
 	@FindBy(xpath = "//li[text()='Other']")
 	private WebElement otherGenderLi;
 
+	@FindBy(xpath="//div//span[contains(@class,'iconContainer Mui-completed')]/..//span[text()='Personal Details']")
+	private WebElement personalDetailsTick;
 	/**
 	 * Financial Status Section
 	 */
 	
 	//Earning Status Financial Status
-	@FindBy(id = "demo-simple-select-outlined")
+	@FindBy(xpath="//div[@id='demo-simple-select-outlined']")
 	private WebElement earningStatusPicker;
 
 	
@@ -419,6 +421,13 @@ public class CreateMyPlanPage {
 	 */
 	public List<WebElement> getCurrentCityLi() {
 		return currentCityLi;
+	}
+
+	/**
+	 * @return the personalDetailsTick
+	 */
+	public WebElement getPersonalDetailsTick() {
+		return personalDetailsTick;
 	}
 
 	/**

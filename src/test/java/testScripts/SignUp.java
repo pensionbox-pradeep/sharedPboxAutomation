@@ -5,11 +5,11 @@ import org.testng.annotations.Test;
 import org.testng.annotations.Test;
 
 import generic.BaseClass;
-import generic.WebDriverUtils;
 import pageObjects.GetStartedPage;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.WelcomePage;
+import utilities.WebDriverUtils;
 
 public class SignUp extends BaseClass{
 	@Test

@@ -3,7 +3,6 @@ package testScripts;
 import org.testng.annotations.Test;
 import org.testng.annotations.Test;
 import generic.BaseClass;
-import generic.WebDriverUtils;
 import generic.WipBaseClass;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
@@ -11,6 +10,7 @@ import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.WelcomePage;
 import popUpModals.PushNotificationModal;
+import utilities.WebDriverUtils;
 
 public class Login extends WipBaseClass {
 

@@ -20,6 +20,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import utilities.UtilsClass;
+import utilities.WebDriverUtils;
 
 @SuppressWarnings("unused")
 
