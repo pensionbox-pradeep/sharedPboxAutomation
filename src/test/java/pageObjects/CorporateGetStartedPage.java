@@ -36,7 +36,7 @@ public class CorporateGetStartedPage {
 	@FindBy(xpath = "//input[@placeholder='Mobile number']")
 	public WebElement mobileNumberTf;
 	
-	@FindBy(xpath = "//input[@placeholder='Your Work Email']']")
+	@FindBy(xpath = "//input[@placeholder='Your Work Email']")
 	public WebElement adminEmailTf;
 
 	@FindBy(xpath = "//input[@placeholder='Your Brand Name ']")
@@ -82,7 +82,77 @@ public class CorporateGetStartedPage {
 	
 	@FindBy(xpath = "(//div[contains(@class,'betaBadgeWrapper')])[2]")
 	public WebElement secureAndEncryptedBadge;
+	
+	@FindBy(xpath = "//div[text()='TrustBox Explained']")
+	public WebElement trustBoxExplainedTxt;
+	
+	@FindBy(xpath = "//div[contains(@class,'closeIcon')]")
+	public WebElement closeTrustBoxModal;
+	
+	/*
+	 * Warning Labels
+	 */
+	@FindBy(xpath = "(//label[@id='standard-basic-label'])[1]")
+	public WebElement adminNameWarning;
+	
+	@FindBy(xpath = "(//label[@id='standard-basic-label'])[2]")
+	public WebElement adminMobileWarning;
+	
+	@FindBy(xpath = "(//label[@id='standard-basic-label'])[3]")
+	public WebElement adminEmailWarning;
+	
+	@FindBy(xpath = "(//label[@id='standard-basic-label'])[4]")
+	public WebElement adminBrandNameWarning;
+	
+	/*
+	 * OTP Page
+	 */
+	
+	/**
+	 * @return the closeTrustBoxModal
+	 */
+	public WebElement getCloseTrustBoxModal() {
+		return closeTrustBoxModal;
+	}
 
+	@FindBy(xpath = "//div[text()='Enter OTP']")
+	public WebElement otpHeaderTxt;
+	
+	@FindBy(xpath = "((//div[contains(@class,'subHeader')])[2]/span)[1]")
+	public WebElement otpNumberTxt;
+	
+	@FindBy(xpath = "((//div[contains(@class,'subHeader')])[2]/span)[2]")
+	public WebElement otpEmailTxt;
+	
+	@FindBy(xpath = "//input[@name='char1']")
+    private WebElement OtpTF;
+	
+	@FindBy(xpath = "//input[@name='char4']")
+	private WebElement Otp4TF;
+	
+	/**
+	 * @return the otp4TF
+	 */
+	public WebElement getOtp4TF() {
+		return Otp4TF;
+	}
+
+	@FindBy(xpath = "//span[contains(text(),'Verify')]/..")
+    private WebElement LogInVerifyBtn;
+	
+	/**
+	 * @return the otpErrorTxt
+	 */
+	public WebElement getOtpErrorTxt() {
+		return otpErrorTxt;
+	}
+
+	@FindBy(xpath = "//div[contains(@class,'MuiAlert-message')]")
+	private WebElement otpErrorTxt;
+	
+	@FindBy(xpath = "//button[text()='RESEND']")
+	public WebElement resendBtn;
+	
 	/**
 	 * @return the pbLogo
 	 */
@@ -215,5 +285,86 @@ public class CorporateGetStartedPage {
 	public WebElement getSecureAndEncryptedBadge() {
 		return secureAndEncryptedBadge;
 	}
+	
+	/**
+	 * @return the trustBoxExplainedTxt
+	 */
+	public WebElement getTrustBoxExplainedTxt() {
+		return trustBoxExplainedTxt;
+	}
+
+	/**
+	 * @return the adminNameWarning
+	 */
+	public WebElement getAdminNameWarning() {
+		return adminNameWarning;
+	}
+
+	/**
+	 * @return the adminMobileWarning
+	 */
+	public WebElement getAdminMobileWarning() {
+		return adminMobileWarning;
+	}
+
+	/**
+	 * @return the adminEmailWarning
+	 */
+	public WebElement getAdminEmailWarning() {
+		return adminEmailWarning;
+	}
+
+	/**
+	 * @return the adminBrandNameWarning
+	 */
+	public WebElement getAdminBrandNameWarning() {
+		return adminBrandNameWarning;
+	}
+
+	/**
+	 * @return the otpTF
+	 */
+	public WebElement getOtpTF() {
+		return OtpTF;
+	}
+
+	/**
+	 * @return the logInVerifyBtn
+	 */
+	public WebElement getLogInVerifyBtn() {
+		return LogInVerifyBtn;
+	}
+
+	/**
+	 * @return the resendBtn
+	 */
+	public WebElement getResendBtn() {
+		return resendBtn;
+	}
+
+	/**
+	 * @return the otpHeaderTxt
+	 */
+	public WebElement getOtpHeaderTxt() {
+		return otpHeaderTxt;
+	}
+
+	/**
+	 * @return the otpNumberTxt
+	 */
+	public WebElement getOtpNumberTxt() {
+		return otpNumberTxt;
+	}
+
+	/**
+	 * @return the otpEmailTxt
+	 */
+	public WebElement getOtpEmailTxt() {
+		return otpEmailTxt;
+	}
+
+	
+	
+	
 	
 }
