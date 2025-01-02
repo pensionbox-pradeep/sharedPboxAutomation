@@ -10,7 +10,7 @@ public class DeleteUser {
 	public static void main(String[] args) throws SQLException{
 		try {
 			DeleteUser dr = new DeleteUser();
-			dr.deleteUser("9844267177");
+			dr.deleteUser("8596988688");
 		} 
 		catch (SQLException e){
 			System.err.println("SQLException: " + e.getMessage());
@@ -19,7 +19,7 @@ public class DeleteUser {
 
 
 	public void deleteUser(String phNo) throws SQLException{
-		try(Connection con = DriverManager.getConnection("jdbc:mysql://pensionbox-qa-database.clvkkb0owtsr.ap-south-1.rds.amazonaws.com/pensionbox_qa", "admin", "qa12345678");
+		try(Connection con = DriverManager.getConnection("jdbc:mysql://pensionbox-qa-database.clvkkb0owtsr.ap-south-1.rds.amazonaws.com:3306/pensionbox_qa", "admin", "qa12345678");
 				Statement state = con.createStatement()){
 
 			String query = "SELECT userid FROM `pensionbox_qa`.`users` WHERE contactNumber = '" + phNo + "'";

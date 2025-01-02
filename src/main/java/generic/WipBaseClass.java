@@ -39,7 +39,7 @@ public class WipBaseClass {
 	}
 	
 	public static WebDriver getDriver() {
-		System.out.println("getDriver method is called");
+		//System.out.println("getDriver method is called");
 		return tdriver.get();
 	}
 }

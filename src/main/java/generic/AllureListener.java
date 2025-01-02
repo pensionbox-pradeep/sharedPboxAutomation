@@ -31,11 +31,11 @@ public class AllureListener implements ITestListener {
 	 * SS attach Logic
 	 */
 	public void captureScreenshot(WebDriver driver, ITestResult result) {
-		System.out.println("Inside captureScreenshot");
+		//System.out.println("Inside captureScreenshot");
 		byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	    Allure.addAttachment(getTestName(result)+" Screenshot", new ByteArrayInputStream(screenshot));
 	    //byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-	    System.out.println("Screenshot length: " + (screenshot != null ? screenshot.length : 0));
+	    System.out.println(getTestName(result)+" :Screenshot length: " + (screenshot != null ? screenshot.length : 0));
 	    //return screenshotBytes;
 	}
 	
@@ -48,7 +48,7 @@ public class AllureListener implements ITestListener {
 			e.printStackTrace();
 		}
 		driver=WipBaseClass.getDriver();
-		System.out.println("Inside onTestFailure");
+		//System.out.println("Inside onTestFailure");
 		captureScreenshot(driver, result);
 		
     }
