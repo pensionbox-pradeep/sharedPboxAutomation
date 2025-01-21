@@ -41,17 +41,30 @@ public class AllureListener implements ITestListener {
 	
 	@Override
 	public void onTestFailure(ITestResult result) {
+		
+		System.out.println("Inside On Test Failure");
+		System.out.println(getTestName(result));
+		
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+            // Only proceed if WebDriver is already initialized
+            if (WipBaseClass.getDriver() == null) {
+                System.out.println("WebDriver is not initialized yet. Skipping screenshot capture.");
+                return;  // Exit if driver isn't initialized
+            }
+		}catch (Exception e) {
+	            
+            }
 		driver=WipBaseClass.getDriver();
 		//System.out.println("Inside onTestFailure");
 		captureScreenshot(driver, result);
 		
-    }
+
 
 //	@Override
 //	public void onTestSuccess(ITestResult result) {
@@ -66,6 +79,6 @@ public class AllureListener implements ITestListener {
 //		captureScreenshot(driver, result);
 //	}
 	
-	
+	}
 }
 

@@ -1,17 +1,22 @@
 <project
     xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>in.pensionbox</groupId>
     <artifactId>pensionboxtestautomation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+   
+   
     <properties>
         <!-- Set the Java version -->
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <maven.compiler.release>23</maven.compiler.release>
         <!-- Optional -->
     </properties>
+   
+   
     <build>
         <plugins>
             <plugin>
@@ -26,7 +31,43 @@
                     <!-- Optional -->
                 </configuration>
             </plugin>
-        </plugins>
+            
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->   
+            <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.2</version>
+        <configuration>
+        	<disableXmlReport>true</disableXmlReport>
+        	<skipTests>false</skipTests>
+				
+          <suiteXmlFiles>
+          		<!-- pass testng.xml files as argument from command line -->
+    			<suiteXmlFile>${suiteXmlFiles}</suiteXmlFile>
+          </suiteXmlFiles>
+        <!-- 
+            <suiteXmlFile>./TestNGSuites/SmokeSuite.xml</suiteXmlFile>
+            <suiteXmlFile>./TestNGSuites/RegSuite.xml</suiteXmlFile>
+		-->	
+        </configuration>
+      </plugin>
+    
+    <!-- Allure Maven Plugin -->
+    <plugin>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-maven</artifactId>
+      
+<!-- 
+	
+      <configuration>
+        <allure.results.directory></allure.results.directory>
+      </configuration>
+-->      
+      <version>2.8</version> <!-- Use the latest version -->
+    </plugin>
+    
+    
+    </plugins>
     </build>
     <dependencies>
         <!-- WDM -->
@@ -65,14 +106,24 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.10.2</version>
-            <scope>test</scope>
+        <!-- <scope>test</scope> -->    
         </dependency>
+        
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+    		<groupId>com.mysql</groupId>
+    		<artifactId>mysql-connector-j</artifactId>
+    		<version>9.1.0</version>
+		</dependency>
+        
+        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j 
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>8.3.0</version>
-        </dependency>
+        </dependency> --> 
+        
+        
         <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
         <dependency>
             <groupId>com.aventstack</groupId>
@@ -121,17 +172,14 @@
             <version>2.20.0</version>
         </dependency>
         
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.5.2</version>
-        </dependency>
-        
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.22.1</version>
         </dependency>
+        
+       
+
+        
     </dependencies>
 </project>
