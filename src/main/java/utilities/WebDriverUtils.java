@@ -8,6 +8,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -251,7 +252,6 @@ public class WebDriverUtils {
 	}
 	
 	/**
-	 * 
 	 * @param liWe
 	 * @param selectDay
 	 * @throws InterruptedException 
@@ -268,5 +268,43 @@ public class WebDriverUtils {
 	public WebElement lazyWEXp(WebDriver driver, String xPath) {
 		return driver.findElement(By.xpath(xPath));
 	}
+	
+	/**
+	 * This method switches driver control to new tab
+	 * @param driver
+	 * @throws InterruptedException
+	 */
+	String mainWindowHandle;
+	Set<String> windowHandles;
+	
+	public void switchToNewTab(WebDriver driver) throws InterruptedException {
+		Thread.sleep(1000);
+		mainWindowHandle = driver.getWindowHandle();
+
+		// Get all window handles
+		windowHandles = driver.getWindowHandles();
+
+		// Switch to the newly opened tab
+		for (String handle : windowHandles) {
+		    if (!handle.equals(mainWindowHandle)) {
+		        driver.switchTo().window(handle); // Switch to new tab
+		        break;
+		    }
+		}
+	}
+	
+	/**
+	 * Method to close the current tab and switch driver control to main window
+	 * @param driver
+	 * @throws InterruptedException
+	 */
+	public void closeTab(WebDriver driver) throws InterruptedException {
+		Thread.sleep(1000);
+		driver.close();
+		driver.switchTo().window(mainWindowHandle);
+	}
+	
+	
+	
 }
 

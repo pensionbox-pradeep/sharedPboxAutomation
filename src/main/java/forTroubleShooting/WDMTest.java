@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class WDMTest {
-	
+	/*
 	static WebDriver driver;
 	static String link= "https://qa.pensionbox.in";
 	static char browserKey = 'c';
@@ -51,5 +51,5 @@ public class WDMTest {
 		driver = new FirefoxDriver();
 		driver.get(link);
 	}
-	
+	*/
 }

@@ -62,10 +62,16 @@ public class CorporateGetStartedPage {
 	public WebElement welcomeBackTxt;
 	
 	@FindBy(xpath = "//div[text()='Log in to your PensionBox account']")
+	public WebElement welcomeBackSubHeaderTxt;
+	
+	@FindBy(xpath = "//div[text()='Log in to your PensionBox account']")
 	public WebElement loginSubHeaderTxt;
 	
 	@FindBy(xpath = "//input[@placeholder='Your Work Email']")
 	public WebElement loginEmailTf;
+	
+	@FindBy(xpath = "//label[@id='standard-basic-label']")
+	public WebElement loginEmailWarning;
 	
 	@FindBy(xpath = "//span[text()='Login']")
 	public WebElement logInBtn2;
@@ -245,6 +251,13 @@ public class CorporateGetStartedPage {
 	}
 
 	/**
+	 * @return the welcomeBackSubHeaderTxt
+	 */
+	public WebElement getWelcomeBackSubHeaderTxt() {
+		return welcomeBackSubHeaderTxt;
+	}
+
+	/**
 	 * @return the loginSubHeaderTxt
 	 */
 	public WebElement getLoginSubHeaderTxt() {
@@ -256,6 +269,13 @@ public class CorporateGetStartedPage {
 	 */
 	public WebElement getLoginEmailTf() {
 		return loginEmailTf;
+	}
+
+	/**
+	 * @return the loginEmailWarning
+	 */
+	public WebElement getLoginEmailWarning() {
+		return loginEmailWarning;
 	}
 
 	/**
