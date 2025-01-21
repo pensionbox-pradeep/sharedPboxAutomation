@@ -19,6 +19,9 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
+import utilities.UtilsClass;
+import utilities.WebDriverUtils;
+
 @SuppressWarnings("unused")
 
 public class BaseClass {
@@ -26,7 +29,9 @@ public class BaseClass {
 	public static ExtentReports exReports;
     public static ExtentTest testest;
     public static WebDriverUtils wdu;
-	@BeforeSuite
+    public static UtilsClass ut;
+    
+    @BeforeSuite
 	public void initializeExReports(){
         ExtentSparkReporter sparkReporter_All=new ExtentSparkReporter("First.html");
         exReports = new ExtentReports();
