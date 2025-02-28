@@ -388,7 +388,7 @@ public class UserGetStartedFlow extends WipBaseClass{
 	@Test(priority = 23, dependsOnMethods = {"TC_022"})
 	@Description("Verify OTP Resend link")
 	public void TC_026() {
-		TC_013();
+		TC_013(); 
 	}
 	
 	@Test(priority = 26, dependsOnMethods = {"TC_022"}, groups = {"smoke"})
