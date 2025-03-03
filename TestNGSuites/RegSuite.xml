@@ -7,24 +7,30 @@
 		<listener class-name="generic.AllureListener"/>
 		<!--<listener class-name="io.qameta.allure.testng.AllureTestNg" />-->
 	</listeners>
-  <test name="Corporate Smoke Tests">
+  <test name="Corporate Regression Tests">
+  <!-- 
         <groups>
             <run>
-                <include name="smoke"/>
+                <include name="reg"/>
             </run>
         </groups>
+  -->
+	
         <classes>
             <class name="testScripts.CorporateGetStartedFlow"/>
         </classes>
     </test>
     
     
-    <test name="B2C Smoke Tests">
+    <test name="B2C Regression Tests">
+    <!-- 
+		
         <groups>
             <run>
-                <include name="smoke"/>
+                <include name="reg"/>
             </run>
         </groups>
+	-->
         <classes>
             <class name="testScripts.UserGetStartedFlow"/>
         </classes>
